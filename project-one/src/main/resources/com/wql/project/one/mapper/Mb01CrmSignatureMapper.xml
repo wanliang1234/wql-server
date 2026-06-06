@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wql.project.one.mapper.Mb01CrmSignatureMapper">
+    <!-- 注意：主键字段对应实体中的 mb01SignatureId -->
+    <resultMap id="BaseResultMap" type="com.wql.project.one.vo.Mb01CrmSignatureVO">
+        <id column="mb01_signature_id" property="mb01SignatureId"/>
+
+        <!-- 基础字段映射 -->
+        <result column="mb01_user_id" property="mb01UserId"/>
+        <result column="mb01_signature_bt" property="mb01SignatureBt"/>
+
+        <!-- 软删除字段 -->
+        <result column="logic_del" property="logicDel"/>
+
+        <!-- 审计字段映射 -->
+        <result column="create_id" property="createId"/>
+        <result column="create_name" property="createName"/>
+        <result column="create_time" property="createTime"/>
+        <result column="update_id" property="updateId"/>
+        <result column="update_name" property="updateName"/>
+        <result column="update_time" property="updateTime"/>
+    </resultMap>
+
+    <select id="getSingle" resultMap="BaseResultMap">
+        SELECT sg.mb01_signature_id,
+               sg.mb01_user_id,
+               sg.mb01_signature_bt,
+               sg.create_time
+        FROM mb01_crm_signature AS sg
+        WHERE sg.logic_del = '0'
+          AND sg.mb01_user_id = #{mb01UserId}
+        ORDER BY sg.create_time DESC LIMIT 1
+    </select>
+</mapper>
