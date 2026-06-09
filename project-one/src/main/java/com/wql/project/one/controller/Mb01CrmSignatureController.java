@@ -16,4 +16,9 @@ public class Mb01CrmSignatureController {
     public Mb01CrmSignatureVO getSingle(@RequestParam("mb01UserId") String mb01UserId) {
         return mb01CrmSignatureService.getSingle(mb01UserId);
     }
+
+    @PostMapping("/setOneMq")
+    public Boolean setOneMq(@RequestParam("mb01UserId") String mb01UserId) {
+        return mb01CrmSignatureService.setOneMq(mb01UserId);
+    }
 }

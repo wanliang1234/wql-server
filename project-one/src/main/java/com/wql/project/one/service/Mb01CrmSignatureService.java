@@ -14,4 +14,11 @@ public interface Mb01CrmSignatureService extends IService<Mb01CrmSignature> {
      * @return
      */
     Mb01CrmSignatureVO getSingle(String mb01UserId);
+
+    /**
+     * 将消息写入one交换机
+     * @param mb01UserId
+     * @return
+     */
+    Boolean setOneMq(String mb01UserId);
 }
