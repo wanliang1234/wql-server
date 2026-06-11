@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.net.URLEncoder;
 import java.util.ArrayList;
@@ -29,6 +30,13 @@ public class Mb01CrmSignatureControllerOne {
     @GetMapping("/getSingle")
     public Mb01CrmSignatureVO getSingle(@RequestParam("mb01UserId") String mb01UserId) {
         return stockFeignService.getSingle(mb01UserId);
+    }
+
+    @GetMapping("/upFile")
+    public boolean mediaUpload(@RequestParam("file") MultipartFile multipartFile){
+        System.out.println(multipartFile.getName());
+        System.out.println(multipartFile.getOriginalFilename());
+        return true;
     }
 
     /**
