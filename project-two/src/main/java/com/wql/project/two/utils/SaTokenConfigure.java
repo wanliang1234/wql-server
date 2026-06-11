@@ -21,6 +21,7 @@ public class SaTokenConfigure implements WebMvcConfigurer {
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(new SaInterceptor(handle -> StpUtil.checkLogin()))
                 .addPathPatterns("/**")
-                .excludePathPatterns("/user/jwtToken"); //白名单
+                .excludePathPatterns("/user/jwtToken") //登录接口
+                .excludePathPatterns("/two/signature/export"); //PDF导出
     }
 }
